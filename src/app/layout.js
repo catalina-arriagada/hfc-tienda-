@@ -4,7 +4,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Hair Fashion Colors",
+  title: "Hair Fashion Colors Tinturas Chile - Vegan & Cruelty-Free",
   description: "",
 };
 
