@@ -1,9 +1,7 @@
 import Servicios from '../../Components/Servicios';
 
-export default function Home() {
+export default function ServiciosPage() {
   return (
-    <>
       <Servicios />
-    </>
   );
 }

@@ -3,12 +3,12 @@ import Link from "next/link";
 
 const Carritos = () => {
   return (
-    <main class="main">
-      <div class="container-testimonials">
-        <h2 class="section__title">Mi carrito de compras</h2>
+    <main className="main">
+      <div className="container-testimonials">
+        <h2 className="section__title">Mi carrito de compras</h2>
         <a
           href="productos.php"
-          class="welcome__btn"
+          className="welcome__btn"
           style="text-align: center;"
           id="agregarProducto"
         >
@@ -36,7 +36,7 @@ const Carritos = () => {
         </a>
         <a
           href="DB/productos/pedido.php"
-          class="welcome__btn"
+          className="welcome__btn"
           style="text-align: center;"
         >
           Terminar Compra

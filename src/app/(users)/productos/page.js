@@ -1,9 +1,7 @@
 import Productos from '../../Components/Productos';
 
-export default function Home() {
+export default function ProductosPage() {
   return (
-    <>
       <Productos />
-    </>
   );
 }

@@ -2,29 +2,29 @@ import React from "react";
 
 const Registro = () => {
     return(
-        <main class="main">
-            <section class="info">
-                <h3 class="design__title">Regístrate</h3>
+        <main className="main">
+            <section className="info">
+                <h3 className="design__title">Regístrate</h3>
             </section>
-            <section class="container-testimonials">
+            <section className="container-testimonials">
                 <form method="post" name="f1">
-                    <h3 class="section__title">Registrate y pide productos o citas a nuestro salón de belleza</h3>
-                    <div class="testimonials__txt">
+                    <h3 className="section__title">Registrate y pide productos o citas a nuestro salón de belleza</h3>
+                    <div className="testimonials__txt">
                         <label for="nombre">Nombre de usuario:</label>
                         <input type="text" pattern="[a-zA-Z0-9]+" name="nombre" placeholder="luisperez123" required />
                         <br />
                     </div>
-                    <div class="testimonials__txt">
+                    <div className="testimonials__txt">
                         <label for="email">Email:</label>
                         <input type="text" name="email" placeholder="luisperez35@gmail.com" required />
                         <br />
                     </div>
-                    <div class="testimonials__txt">    
+                    <div className="testimonials__txt">    
                         <label for="telefono">Telefono:</label>
                         <input type="number" max= "999999999" name="telefono" placeholder="987656560" required />
                         <br />
                     </div>
-                    <div class="testimonials__txt">
+                    <div className="testimonials__txt">
                         <label for="region">Región:</label>
                         <select name="region" onchange="cambia_comuna()">
                             <option value="-1" selected required>-- Seleccione --</option>
@@ -47,7 +47,7 @@ const Registro = () => {
                         </select>
                         <br />
                     </div>
-                    <div class="testimonials__txt">
+                    <div className="testimonials__txt">
                         <label for="comuna">Comuna:</label>
                         <select name="comuna"> 
                             <option value="-"/>
@@ -395,22 +395,22 @@ const Registro = () => {
                         </select>
                         <br />
                     </div>
-                    <div class="testimonials__txt">
+                    <div className="testimonials__txt">
                         <label for="direccion">Dirección:</label>
                         <input type="text" id="direccion" name="direccion" placeholder="Calle Ahumada 3247" required />
                         <br />
                     </div>
-                    <div class="testimonials__txt">
+                    <div className="testimonials__txt">
                         <label for="contrasenia">Contraseña:</label>
                         <input type="password" name="contrasenia" required />
                         <br />
                     </div>
-                    <div class="testimonials__txt">
+                    <div className="testimonials__txt">
                         <input type="submit" value="Registrar" name="btn_registrar" />
                     </div>                    
                 </form>
-                <h3 class="section__title">Si ya tienes cuenta Ingresa aquí</h3>
-                <a href="login.php" class="welcome__btn">Ingresa</a>
+                <h3 className="section__title">Si ya tienes cuenta Ingresa aquí</h3>
+                <a href="login" class="welcome__btn">Ingresa</a>
             </section>
         </main>
     )
