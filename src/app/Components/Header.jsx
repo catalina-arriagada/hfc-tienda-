@@ -11,14 +11,14 @@ const Header = () => {
                     <span className="icon-menu" id="btn-menu"><i className="fas fa-bars"></i></span>
                     <ul className="menu" id="menu">
                         <li className="menu__item"><Link href="/" className="menu__link menu__link--select"><span>Inicio</span></Link></li>
-                        <li className="menu__item"><Link href="productos" className="menu__link"><span>Productos</span></Link></li>
-                        <li className="menu__item"><Link href="servicios" className="menu__link"><span>Servicios</span></Link></li>
-                        <li className="menu__item"><Link href="preguntasfrecuentes" className="menu__link"><span>Preguntas frecuentes</span></Link></li>
+                        <li className="menu__item"><Link href="/productos" className="menu__link"><span>Productos</span></Link></li>
+                        <li className="menu__item"><Link href="/servicios" className="menu__link"><span>Servicios</span></Link></li>
+                        <li className="menu__item"><Link href="/preguntasfrecuentes" className="menu__link"><span>Preguntas frecuentes</span></Link></li>
                         <div className="nav-social">
                         <Link href="https://www.facebook.com/Hairfashioncolors/" className="nav-social__item" target="_blank"><i className="fab fa-facebook-f"></i></Link>
                         <Link href="https://wa.link/vstqqk" className="nav-social__item" target="_blank"><i className="fab fa-whatsapp"></i></Link>
                         <Link href="https://www.instagram.com/hairfashioncolors/" className="nav-social__item" target="_blank"><i className="fab fa-instagram"></i></Link>
-                        <Link href="login" className="nav-social__item"><i className="fa-solid fa-user"></i></Link>            
+                        <Link href="/login" className="nav-social__item"><i className="fa-solid fa-user"></i></Link>            
                         </div>
                         <hr />
                     </ul>

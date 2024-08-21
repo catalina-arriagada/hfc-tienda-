@@ -13,7 +13,7 @@ const Index = () => {
             productos de estética capilar. También somos un Salón de Belleza
             especializado en coloración y cuidado capilar.
           </p>
-          <a href="preguntasfrecuentes.php" class="welcome__btn">
+          <a href="/preguntasfrecuentes" class="welcome__btn">
             MÁS INFO
           </a>
         </section>

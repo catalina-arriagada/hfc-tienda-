@@ -113,7 +113,54 @@ const usuariosSchema = new mongoose.Schema({
     } catch (e) {
         res.status(500).json({ error: 'Error al iniciar sesión' });
     }
+  });
+
+  // Esquema del Producto
+const productoSchema = new mongoose.Schema({
+  nombre: {
+    type: String,
+    required: true, // El nombre del producto es obligatorio
+    trim: true, // Elimina espacios en blanco antes y después del valor
+  },
+  imagen: {
+    type: String, // URL de la imagen del producto
+    required: true,
+  },
+  precio: {
+    type: String,
+    required: true, // El precio del producto es obligatorio
+    //min: 0, // El precio no puede ser negativo
+  },
+}, { collection: 'productos' });
+
+// Modelo de Producto
+const Producto = mongoose.model('Producto', productoSchema);
+
+module.exports = Producto;
+
+  // Ruta para obtener un producto por ID
+app.get('/productos/:id', async (req, res) => {
+  try {
+    const producto = await Producto.findById(req.params.id);
+    if (!producto) {
+      return res.status(404).json({ error: 'Producto no encontrado' });
+    }
+    res.json(producto);
+  } catch (e) {
+    res.status(500).json({ error: 'Error al obtener el producto' });
+  }
 });
+
+// Ruta para obtener todos los productos
+app.get('/productos', async (req, res) => {
+  try {
+    const productos = await Producto.find();
+    res.status(200).json(productos);
+  } catch (e) {
+    res.status(500).json({ error: 'Error al obtener los productos' });
+  }
+});
+
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);

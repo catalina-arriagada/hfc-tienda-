@@ -7,7 +7,7 @@ const Carritos = () => {
       <div className="container-testimonials">
         <h2 className="section__title">Mi carrito de compras</h2>
         <a
-          href="productos.php"
+          href="/productos"
           className="welcome__btn"
           style="text-align: center;"
           id="agregarProducto"
@@ -16,7 +16,7 @@ const Carritos = () => {
         </a>
         <br />
         <hr />
-        <a href="DB/productos/pedido.php" style="padding-left:34%;">
+        <a href="/productos/pedido" style="padding-left:34%;">
           <input type="hidden" name="cmd" value="_s-xclick" />
           <input type="hidden" name="hosted_button_id" value="TUNX8BRWUZWLW" />
           <input
@@ -35,7 +35,7 @@ const Carritos = () => {
           />
         </a>
         <a
-          href="DB/productos/pedido.php"
+          href="/productos/pedido"
           className="welcome__btn"
           style="text-align: center;"
         >

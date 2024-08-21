@@ -18,7 +18,7 @@ const ConfirmacionCita = () => {
             </dl>
             <br/>
             <h3 className="testimonials__txt" style={{color: "red"}}>*Se ha enviado una copia de este comprobante a su email.</h3>
-            <a href="index.php" className="welcome__btn">Volver al inicio</a>
+            <a href="/index" className="welcome__btn">Volver al inicio</a>
             <br />
             <br />
             <hr />

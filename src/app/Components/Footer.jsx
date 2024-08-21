@@ -50,13 +50,13 @@ const Footer = () => {
                     <br />
                     <div className="contact-icon">
                         <i className="fas fa-user"></i>
-                        <a href="login" className="contact__txt">Ingresa | Regístrate</a> 
+                        <a href="/login" className="contact__txt">Ingresa | Regístrate</a> 
                     </div>
                     <br/>
                     <br/>
                     <div className="contact-icon">
                         <i className="fas fa-door-closed"></i>
-                        <a href="deslogueo" className="contact__txt">Cerrar Sesión</a> 
+                        <a href="/deslogueo" className="contact__txt">Cerrar Sesión</a> 
                     </div>
                 </div>
             </div>

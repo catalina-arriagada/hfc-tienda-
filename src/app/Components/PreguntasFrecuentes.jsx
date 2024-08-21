@@ -9,12 +9,12 @@ const PreguntasFrecuentes = () => {
             <section className="container-testimonials">
                 <h3 className="section__title">¿Cómo comprar?</h3>
                 <p className="testimonials__txt">Puedes comprar logueandote y entrando a nuestra sesión de productos, presencialmente en nuestras tiendas físicas, o Contáctanos por Instagram @hairfashioncolors o WhatsApp +56979326470 (hacemos envíos)</p>
-                <a className="welcome__btn" href="productos" style={{textAlign: 'center'}}>Comprar productos</a>
+                <a className="welcome__btn" href="/productos" style={{textAlign: 'center'}}>Comprar productos</a>
             </section>
             <section className="container-testimonials">
                 <h3 className="section__title">¿Cómo pido cita para el salón de belleza?</h3>
                 <p className="testimonials__txt">Puedes agendar cita entrando a este enlace, luego de registrarte y loguearte:</p>
-                <a className="welcome__btn" href="agenda" style={{textAlign: 'center'}}>Agendar</a>
+                <a className="welcome__btn" href="/agenda" style={{textAlign: 'center'}}>Agendar</a>
             </section>
             <section className="container-testimonials">
                 <h3 className="section__title">¿Cuál es el precio de las tinturas originales de hfc?</h3>
@@ -59,7 +59,7 @@ const PreguntasFrecuentes = () => {
             <section className="container-testimonials">
                 <h3 className="section__title">¿Cuáles son los colores?</h3>
                 <p className="testimonials__txt">Tenemos una amplia gama de colores hecha por nosotros, esta se encuentra en la página.</p>
-                <a href="productos" className="welcome__btn" style={{textAlign: 'center'}}>Nuestros Productos</a>
+                <a href="/productos" className="welcome__btn" style={{textAlign: 'center'}}>Nuestros Productos</a>
             </section>
             <section className="container-testimonials">
                 <h3 className="section__title">¿Cuál es el modo de uso?</h3>
