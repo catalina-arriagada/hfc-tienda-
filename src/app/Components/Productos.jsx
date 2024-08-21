@@ -9,7 +9,7 @@ const Productos = () => {
         </section>
         <div className="container-design">
           <div className="design__item">
-            <Link href="producto">
+            <Link href="[id]">
               <img
                 className="design__img"
                 src="img/productos/1o.jpg"

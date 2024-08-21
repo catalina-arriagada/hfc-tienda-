@@ -7,14 +7,14 @@ const Login = () => {
                 <h3 className="design__title">Ingresa a tu cuenta</h3>
             </section>
             <section className="container-testimonials">
-                <form action="login.php" method="post">
+                <form action="login" method="post">
                     <div className="testimonials__txt">
-                        <label for="nombre">Nombre de usuario:</label>
+                        <label htmlFor="nombre">Nombre de usuario:</label>
                         <input type="text" pattern="[a-zA-Z0-9]+" id="nombre" name="nombre" placeholder="luisperez123" className="input" required />
                         <br />
                     </div>
                     <div className="testimonials__txt">
-                        <label for="contrasenia">Contraseña:</label>
+                        <label htmlFor="contrasenia">Contraseña:</label>
                         <input type="password" id="contrasenia" name="contrasenia" className="input" required />
                         <br />
                     </div>

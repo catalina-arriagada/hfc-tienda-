@@ -1,61 +1,129 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
+import axios from 'axios';
 
 const Registro = () => {
-    return(
-        <main className="main">
-            <section className="info">
-                <h3 className="design__title">Regístrate</h3>
-            </section>
-            <section className="container-testimonials">
-                <form method="post" name="f1">
-                    <h3 className="section__title">Registrate y pide productos o citas a nuestro salón de belleza</h3>
-                    <div className="testimonials__txt">
-                        <label for="nombre">Nombre de usuario:</label>
-                        <input type="text" pattern="[a-zA-Z0-9]+" name="nombre" placeholder="luisperez123" required />
-                        <br />
-                    </div>
-                    <div className="testimonials__txt">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" placeholder="luisperez35@gmail.com" required />
-                        <br />
-                    </div>
-                    <div className="testimonials__txt">    
-                        <label for="telefono">Telefono:</label>
-                        <input type="number" max= "999999999" name="telefono" placeholder="987656560" required />
-                        <br />
-                    </div>
-                    <div className="testimonials__txt">
-                        <label for="region">Región:</label>
-                        <select name="region" onchange="cambia_comuna()">
-                            <option value="-1" selected required>-- Seleccione --</option>
-                            <option value="1">METROPOLITANA</option>
-                            <option value="2">Arica-Parinacota</option>
-                            <option value="3">Tarapacá</option>
-                            <option value="4">Antofagasta</option>
-                            <option value="5">Atacama</option>
-                            <option value="6">Coquimbo</option>
-                            <option value="7">Valparaíso</option>
-                            <option value="8">O'Higgins</option>
-                            <option value="9">Maule</option>
-                            <option value="10">Ñuble</option>
-                            <option value="11">Bío Bío</option>
-                            <option value="12">Araucanía</option>
-                            <option value="13">Los Ríos</option>
-                            <option value="14">Los Lagos</option>
-                            <option value="15">Aysén</option>
-                            <option value="16">Magallanes y Antártica Chilena</option>
-                        </select>
-                        <br />
-                    </div>
-                    <div className="testimonials__txt">
-                        <label for="comuna">Comuna:</label>
-                        <select name="comuna"> 
-                            <option value="-"/>
-                        </select>
-                        <select name="comuna">
-                        <option value="-1" selected required>-- Seleccione --</option>
-                            <option value="1">Arica</option>
-                            <option value="2">Camarones</option>
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [region, setRegion] = useState("");
+  const [comuna, setComuna] = useState("");
+  const [direccion, setDireccion] = useState("");
+  const [contrasenia, setContrasenia] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:5000/usuarios', {
+        nombre,
+        email,
+        telefono,
+        region,
+        comuna,
+        direccion,
+        contrasenia
+      });
+      console.log('Usuario creado: ', response.data);
+      alert("Formulario enviado exitosamente");
+
+      // Limpia los campos del formulario
+      setNombre("");
+      setEmail("");
+      setTelefono("");
+      setRegion("");
+      setComuna("");
+      setDireccion("");
+      setContrasenia("");
+    } catch (error) {
+      console.error('Error creando usuario:', error);
+    }
+  };
+
+  return (
+    <main className="main">
+      <section className="info">
+        <h3 className="design__title">Regístrate</h3>
+      </section>
+      <section className="container-testimonials">
+        <form method="post" name="f1" onSubmit={handleSubmit}>
+          <h3 className="section__title">Regístrate y pide productos o citas a nuestro salón de belleza</h3>
+          <div className="testimonials__txt">
+            <label htmlFor="nombre">Nombre de usuario:</label>
+            <input
+              type="text"
+              pattern="[a-zA-Z0-9]+"
+              name="nombre"
+              placeholder="luisperez123"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+              required
+            />
+            <br />
+          </div>
+          <div className="testimonials__txt">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="text"
+              name="email"
+              placeholder="luisperez35@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <br />
+          </div>
+          <div className="testimonials__txt">
+            <label htmlFor="telefono">Teléfono:</label>
+            <input
+              type="number"
+              max="999999999"
+              name="telefono"
+              placeholder="987656560"
+              value={telefono}
+              onChange={(e) => setTelefono(e.target.value)}
+              required
+            />
+            <br />
+          </div>
+          <div className="testimonials__txt">
+            <label htmlFor="region">Región:</label>
+            <select
+              name="region"
+              value={region}
+              onChange={(e) => setRegion(e.target.value)}
+              required
+            >
+              <option value="" disabled>-- Seleccione --</option>
+              <option value="1">METROPOLITANA</option>
+              <option value="2">Arica-Parinacota</option>
+              <option value="3">Tarapacá</option>
+              <option value="4">Antofagasta</option>
+              <option value="5">Atacama</option>
+              <option value="6">Coquimbo</option>
+              <option value="7">Valparaíso</option>
+              <option value="8">O'Higgins</option>
+              <option value="9">Maule</option>
+              <option value="10">Ñuble</option>
+              <option value="11">Bío Bío</option>
+              <option value="12">Araucanía</option>
+              <option value="13">Los Ríos</option>
+              <option value="14">Los Lagos</option>
+              <option value="15">Aysén</option>
+              <option value="16">Magallanes y Antártica Chilena</option>
+            </select>
+            <br />
+          </div>
+          <div className="testimonials__txt">
+            <label htmlFor="comuna">Comuna:</label>
+            <select
+              name="comuna"
+              value={comuna}
+              onChange={(e) => setComuna(e.target.value)}
+              required
+            >
+              <option value="" disabled>-- Seleccione --</option>
+              <option value="Arica">Arica</option>
+              <option value="2">Camarones</option>
                             <option value="3">Putre</option>
                             <option value="4">General Lagos</option>
                             <option value="5">Iquique</option>
@@ -392,28 +460,38 @@ const Registro = () => {
                             <option value="337">Isla de Maipo</option>
                             <option value="338">Padre Hurtado</option>
                             <option value="339">Peñaflor</option>
-                        </select>
-                        <br />
-                    </div>
-                    <div className="testimonials__txt">
-                        <label for="direccion">Dirección:</label>
-                        <input type="text" id="direccion" name="direccion" placeholder="Calle Ahumada 3247" required />
-                        <br />
-                    </div>
-                    <div className="testimonials__txt">
-                        <label for="contrasenia">Contraseña:</label>
-                        <input type="password" name="contrasenia" required />
-                        <br />
-                    </div>
-                    <div className="testimonials__txt">
-                        <input type="submit" value="Registrar" name="btn_registrar" />
-                    </div>                    
-                </form>
-                <h3 className="section__title">Si ya tienes cuenta Ingresa aquí</h3>
-                <a href="login" class="welcome__btn">Ingresa</a>
-            </section>
-        </main>
-    )
-}
+            </select>
+            <br />
+          </div>
+          <div className="testimonials__txt">
+            <label htmlFor="direccion">Dirección:</label>
+            <input
+              type="text"
+              name="direccion"
+              placeholder="Ej. Av. Libertador 123"
+              value={direccion}
+              onChange={(e) => setDireccion(e.target.value)}
+              required
+            />
+            <br />
+          </div>
+          <div className="testimonials__txt">
+            <label htmlFor="contrasenia">Contraseña:</label>
+            <input
+              type="password"
+              name="contrasenia"
+              placeholder="********"
+              value={contrasenia}
+              onChange={(e) => setContrasenia(e.target.value)}
+              required
+            />
+            <br />
+          </div>
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+    </main>
+  );
+};
 
 export default Registro;

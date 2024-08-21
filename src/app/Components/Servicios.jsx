@@ -59,7 +59,7 @@ const Servicios = () => {
                 </div>
             </section>
             <hr style={{color: 'pink'}} />
-            <a href="agenda.php" className="welcome__btn" style={{textAlign: 'center'}}>Agendar Cita</a>
+            <a href="agenda" className="welcome__btn" style={{textAlign: 'center'}}>Agendar Cita</a>
             <br>
             </br>
         </main> 

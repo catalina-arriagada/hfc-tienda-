@@ -21,8 +21,9 @@ const Agenda = () => {
          		<div className="testimonials__txt">
          		 <label>Servicio Solicitado<span style={{color: "red"}}>*</span></label>
             <select name="servicioId" required="required">
-         		   	<option value="" disabled selected>Seleccione...</option>
-                    <option value=""></option>
+         		   	<option value="0" disabled selected>Seleccione...</option>
+                    <option value="1">Corte</option>
+                    <option value="2">Teñir</option>
             </select> 	
          		</div>
                 <div className="testimonials__txt">
@@ -34,12 +35,12 @@ const Agenda = () => {
                   <option value="largo">Largo</option>                                             
                 </select>  
                </div>
-               <p className="testimonials__txt" style="margin-top: 15px; color: red;">Altura del cabello Corto: hasta abajo de las orejas, Medio: hasta los hombros, Largo: hasta la cintura.</p> 
+               <p className="testimonials__txt" style={{marginTop: '15px', color: 'red'}}>Altura del cabello Corto: hasta abajo de las orejas, Medio: hasta los hombros, Largo: hasta la cintura.</p> 
          		<div className="testimonials__txt">
          			<label>Información extra:</label>
               <br />
               <br />
-         			<textarea name="comentarios" placeholder="Ingrese información extra sobre su pedido aquí" rows="6" style="width: 100%"></textarea>
+         			<textarea name="comentarios" placeholder="Ingrese información extra sobre su pedido aquí" rows="6" style={{width: "100%"}}></textarea>
          		</div>
                <div className="testimonials__txt">
                 <input type="submit" value="Agendar" className="welcome__btn" name="agendado" />
