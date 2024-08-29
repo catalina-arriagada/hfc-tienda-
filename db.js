@@ -44,6 +44,8 @@ if (!MONGODB_URI) {
   throw new Error("Please add your Mongo URI to .env.local");
 }
 
+// Modelos //
+
 // Definir el esquema y el modelo de Usuarios
 const usuariosSchema = new mongoose.Schema({
     nombre: {
@@ -59,7 +61,77 @@ const usuariosSchema = new mongoose.Schema({
   //const Usuario = mongoose.model('Usuario', usuariosSchema);
   const Usuario = mongoose.models.Usuario || mongoose.model('Usuario', usuariosSchema);
 
-  // Ruta para agregar un nuevo usuario
+  // Esquema del Producto
+  const productoSchema = new mongoose.Schema({
+    nombre: {
+      type: String,
+      required: true, // El nombre del producto es obligatorio
+      trim: true, // Elimina espacios en blanco antes y después del valor
+    },
+    imagen: {
+      type: String, // URL de la imagen del producto
+      required: true,
+    },
+    precio: {
+      type: Number,
+      required: true, // El precio del producto es obligatorio
+      min: [0, 'El precio no puede ser negativo'], 
+    },
+  }, { collection: 'productos' });
+  
+  // Modelo de Producto
+  //const Producto = mongoose.model('Producto', productoSchema);
+  const Producto = mongoose.models.Producto || mongoose.model('Producto', productoSchema);
+  
+   //module.exports = Producto;
+  // module.exports = Usuario;
+
+  // Definir el esquema y el modelo de Pedidos
+  const pedidoSchema = new mongoose.Schema({
+    usuarioId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Usuario',
+      required: true,
+    },
+    nombreUsuario: {
+      type: String,
+      required: true,
+    },
+    productos: [
+      {
+        productoId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Producto',
+          required: true,
+        },
+        nombre: {
+          type: String,
+          required: true,
+        },
+        precio: {
+          type: Number, // Cambia de String a Number si es más adecuado
+          required: true,
+        },
+        cantidad: {
+          type: Number,
+          required: true,
+        },
+      },
+    ],
+    total: {
+      type: Number,
+      required: true,
+    },
+  }, { collection: 'pedidos' });
+  
+  const Pedido = mongoose.models.Pedido || mongoose.model('Pedido', pedidoSchema);
+// Exportar los modelos
+export { Usuario, Producto, Pedido, bcrypt };
+
+
+// Rutas //
+
+// Ruta para agregar un nuevo usuario
 app.post('/usuarios', async (req, res) => {
   const { nombre, contrasenia } = req.body;
   console.log('Datos recibidos en la ruta /usuarios:', { nombre, contrasenia });
@@ -94,33 +166,7 @@ app.post('/usuarios', async (req, res) => {
     dbConnect().catch(err => {
       console.error('Error al conectar a la base de datos:', err);
   });
-  // Esquema del Producto
-const productoSchema = new mongoose.Schema({
-  nombre: {
-    type: String,
-    required: true, // El nombre del producto es obligatorio
-    trim: true, // Elimina espacios en blanco antes y después del valor
-  },
-  imagen: {
-    type: String, // URL de la imagen del producto
-    required: true,
-  },
-  precio: {
-    type: String,
-    required: true, // El precio del producto es obligatorio
-    //min: 0, // El precio no puede ser negativo
-  },
-}, { collection: 'productos' });
 
-// Modelo de Producto
-//const Producto = mongoose.model('Producto', productoSchema);
-const Producto = mongoose.models.Producto || mongoose.model('Producto', productoSchema);
-
- //module.exports = Producto;
-// module.exports = Usuario;
-
-// Exportar la función de conexión y el modelo
-export { Usuario, Producto, bcrypt };
   // Ruta para obtener un producto por ID
 app.get('/productos/:id', async (req, res) => {
   try {
@@ -143,7 +189,6 @@ app.get('/productos', async (req, res) => {
     res.status(500).json({ error: 'Error al obtener los productos' });
   }
 });
-
 
 // Ruta para validar usuario por nombre y contraseña
 app.post('/usuarios/validar', async (req, res) => {

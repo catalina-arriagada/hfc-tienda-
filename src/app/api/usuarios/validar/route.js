@@ -1,5 +1,8 @@
 import { dbConnect, Usuario, bcrypt } from '../../../../../db'
 import jwt from 'jsonwebtoken'; // Instala jwt con npm install jsonwebtoken
+import dotenv from'dotenv';
+dotenv.config();
+const SECRET_KEY = process.env.JWT_SECRET;
 
 export async function POST(req) {
   await dbConnect();
@@ -38,7 +41,7 @@ export async function POST(req) {
     }
 
     // Generar un token JWT
-    const token = jwt.sign({ id: usuario._id, nombre: usuario.nombre }, 'secreto', { expiresIn: '1h' });
+    const token = jwt.sign({ id: usuario._id, nombre: usuario.nombre }, SECRET_KEY, { expiresIn: '1h' });
 
     // Configurar la cookie con el token
     const headers = new Headers();
