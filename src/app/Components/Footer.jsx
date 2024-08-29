@@ -1,4 +1,5 @@
 import React from "react";
+import Deslog from "./Deslog";
 
 const Footer = () => {
     return (

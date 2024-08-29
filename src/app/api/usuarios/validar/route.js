@@ -1,4 +1,5 @@
 import { dbConnect, Usuario, bcrypt } from '../../../../../db'
+import jwt from 'jsonwebtoken'; // Instala jwt con npm install jsonwebtoken
 
 export async function POST(req) {
   await dbConnect();
@@ -36,7 +37,18 @@ export async function POST(req) {
       });
     }
 
-    return new Response(JSON.stringify({ message: 'Usuario validado' }), {
+    // Generar un token JWT
+    const token = jwt.sign({ id: usuario._id, nombre: usuario.nombre }, 'secreto', { expiresIn: '1h' });
+
+    // Configurar la cookie con el token
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append(
+      'Set-Cookie',
+      `token=${token}; HttpOnly; Path=/; Max-Age=3600; Secure; SameSite=Strict`
+    )
+
+    return new Response(JSON.stringify({ message: 'Usuario validado, inicio de sesión exitoso', token }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',

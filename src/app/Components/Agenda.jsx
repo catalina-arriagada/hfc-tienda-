@@ -1,6 +1,26 @@
+'use client'
 import React from "react";
+import {useEffect, useState} from 'react';
+import { useRouter } from 'next/navigation';
 
 const Agenda = () => {
+    const router = useRouter();
+
+    // Verificar si el usuario está autenticado
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    
+    // Si no hay token, redirigir al login
+    if (!token) {
+      setTimeout(() => {
+        alert('Debe iniciar sesión');
+      }, 1000);
+      router.push('/login');
+      return;
+        }
+    }
+  )
+
     return(
         <main className="main">
         <section className="service__title">

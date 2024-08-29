@@ -1,9 +1,11 @@
 'use client'
 import React, { useState } from "react";
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
   const [nombre, setNombre] = useState('');
   const [contrasenia, setContrasenia] = useState('');
+  const router = useRouter();
   const [error, setError] = useState('');
   const [mensaje, setMensaje] = useState('');
 
@@ -22,7 +24,14 @@ export default function Login() {
       const result = await response.json();
 
       if (response.ok) {
+        // Guardar el token en localStorage
+        localStorage.setItem('token', result.token);
         setMensaje(result.message);
+        alert(result.message);
+        setTimeout(() => {
+          router.push('/'); // Redirigir a la página principal
+        }, 2000);
+        
       } else {
         setError(result.error);
       }
