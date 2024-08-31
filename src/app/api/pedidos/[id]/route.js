@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { dbConnect, Pedido } from '../../../../../db';
 import jwt from 'jsonwebtoken';
 
+// Eliminar pedido
 export async function DELETE(request, { params }) {
   await dbConnect();
   const { id } = params; // ID del pedido a modificar

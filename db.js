@@ -125,8 +125,23 @@ const usuariosSchema = new mongoose.Schema({
   }, { collection: 'pedidos' });
   
   const Pedido = mongoose.models.Pedido || mongoose.model('Pedido', pedidoSchema);
+
+// Definir el esquema y el modelo de Citas
+const citasSchema = new mongoose.Schema({
+  fechaHora: { type: Date, required: true },
+  servicio: { type: String, required: true },
+  alturacabello: { type: String, required: true },
+  comentarios: { type: String },
+  usuario: {
+    id: { type: String, required: true },
+    nombre: { type: String, required: true },
+  },
+});
+
+const Cita = mongoose.models.Cita || mongoose.model('Cita', citasSchema);
+
 // Exportar los modelos
-export { Usuario, Producto, Pedido, bcrypt };
+export { Usuario, Producto, Pedido, Cita, bcrypt };
 
 
 // Rutas //
