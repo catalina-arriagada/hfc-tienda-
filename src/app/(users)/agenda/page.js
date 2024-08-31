@@ -1,4 +1,3 @@
-// app/agenda/page.js
 'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -37,6 +36,7 @@ const Agenda = () => {
 
       setSuccess('Cita agendada con éxito');
       setError('');
+      router.push('/citas');
     } catch (err) {
       console.error('Error al agendar la cita:', err);
       setError('Error al agendar la cita');
@@ -54,6 +54,7 @@ const Agenda = () => {
       <button type="submit">Agendar</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {success && <p style={{ color: 'green' }}>{success}</p>}
+      <a href="/citas">Ver mis citas</a>
     </form>
   );
 };

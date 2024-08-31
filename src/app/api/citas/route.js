@@ -1,6 +1,5 @@
-// api/citas/route.js
 import { NextResponse } from 'next/server';
-import { dbConnect, Cita, Usuario } from '../../../../db';
+import { dbConnect, Cita } from '../../../../db';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -38,5 +37,24 @@ export async function POST(request) {
   } catch (error) {
     console.error('Error al agendar la cita:', error);
     return NextResponse.json({ message: 'Error al agendar la cita' }, { status: 500 });
+  }
+}
+
+export async function GET(request) {
+  await dbConnect();
+
+  try {
+    const authHeader = request.headers.get('Authorization');
+    if (!authHeader) return NextResponse.json({ message: 'No autorizado' }, { status: 401 });
+
+    const token = authHeader.split(' ')[1];
+    const decoded = jwt.verify(token, SECRET_KEY);
+    const userId = decoded.id;
+
+    const citas = await Cita.find({ 'usuario.id': userId });
+    return NextResponse.json(citas, { status: 200 });
+  } catch (error) {
+    console.error('Error al obtener las citas:', error);
+    return NextResponse.json({ message: 'Error al obtener las citas' }, { status: 500 });
   }
 }
