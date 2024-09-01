@@ -123,7 +123,7 @@ const Carritos = () => {
         ) : (
           <p>No hay pedidos en el carrito.</p>
         )}
-        <a
+        {/* <a
           href="/productos/pedido"
           style={{ paddingLeft: '34%' }}
         >
@@ -143,9 +143,9 @@ const Carritos = () => {
             width="1"
             height="1"
           />
-        </a>
+        </a> */}
         <a
-          href="#"
+          href="/paypal"
           className="welcome__btn"
           style={{ textAlign: 'center' }}
         >
