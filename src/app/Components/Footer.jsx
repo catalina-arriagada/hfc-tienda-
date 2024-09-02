@@ -61,7 +61,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-                <p className="copy">© 2022 Hair Fashion Colors. Todos los derechos reservados | <span className="color-span">HairFashionColors</span></p>
+                <p className="copy">© 2024 Catalina Arriagada. Todos los derechos reservados | <span className="color-span">HairFashionColors</span></p>
         </footer>
     )
 }
