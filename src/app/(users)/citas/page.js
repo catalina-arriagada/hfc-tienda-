@@ -72,6 +72,35 @@ const CitasPage = () => {
     }
   };
 
+  // Función para eliminar una cita
+const eliminarCita = async (id) => {
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setError('No autorizado');
+      return;
+    }
+
+    const response = await fetch(`/api/citas/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al eliminar la cita');
+    }
+
+    // Actualizar la lista de citas removiendo la cita eliminada
+    setCitas(citas.filter(cita => cita._id !== id));
+    alert('Cita eliminada');
+  } catch (err) {
+    setError('Error al eliminar la cita');
+    console.error(err);
+  }
+};
+
   // Manejar el cambio en los campos de edición
   const handleEditChange = (e) => {
     const { name, value } = e.target;
@@ -81,62 +110,103 @@ const CitasPage = () => {
   if (error) return <p style={{ color: 'red' }}>{error}</p>;
 
   return (
-    <main>
-      <h1>Mis Citas</h1>
+    <main className='main'>
+      <h3 className="producto_titulo">Mis Citas</h3>
+      <hr />
       {citas.length > 0 ? (
         citas.map(cita => (
           <div key={cita._id}>
-            <p>Fecha y Hora: {new Date(cita.fechaHora).toLocaleString()}</p>
-            <p>Servicio: {cita.servicio}</p>
-            <p>Altura del Cabello: {cita.alturacabello}</p>
-            <p>Comentarios: {cita.comentarios}</p>
-            <button onClick={() => setEditCita(cita)}>Reagendar</button>
-            <button onClick={() => eliminarCita(cita._id)}>Eliminar</button>
+            <p className="testimonials__txt"><b>Cita Número </b>{cita._id}</p>
+            <p className="testimonials__txt"><b>Fecha y Hora: </b>{new Date(cita.fechaHora).toLocaleString()}</p>
+            <p className="testimonials__txt"><b>Servicio: </b>{cita.servicio}</p>
+            <p className="testimonials__txt"><b>Altura del Cabello: </b>{cita.alturacabello}</p>
+            <p className="testimonials__txt"><b>Comentarios: </b>{cita.comentarios}</p>
+            <button className="welcome__btn" onClick={() => setEditCita(cita)}>Reagendar</button>
+            <br></br>
+            <button className="welcome__btn" onClick={() => eliminarCita(cita._id)}>Eliminar</button>
+            <br></br>
+            <br></br>
+            <hr />
           </div>
+          
         ))
       ) : (
-        <p>No hay citas disponibles.</p>
+        <div>
+          <p className="testimonials__txt"><b>No hay citas disponibles.</b></p>
+          <button href='/agenda' className="welcome__btn">Agendar Cita</button>
+        </div>
+        
       )}
 
       {editCita && (
+
         <div>
-          <h2>Editar Cita</h2>
+          <h3 className="section__title">
+          Editar Cita
+          </h3>
+          <p className="testimonials__txt" style={{ color: 'red', marginTop: '15px' }}>
+          * Campos obligatorios
+          </p>
+          <div className="testimonials__txt">
           <label>
-            Fecha y Hora:
-            <input
-              type="datetime-local"
-              name="fechaHora"
-              value={new Date(editCita.fechaHora).toISOString().slice(0, -1)}
-              onChange={handleEditChange}
-            />
+            Fecha y Hora de Cita<span style={{ color: 'red' }}>*</span>
           </label>
+          <input type="datetime-local"
+                name="fechaHora"
+                value={new Date(editCita.fechaHora).toISOString().slice(0, -1)}
+                onChange={handleEditChange}
+                />
+          </div>
+          <div className="testimonials__txt">
           <label>
-            Servicio:
-            <input
-              type="text"
-              name="servicio"
-              value={editCita.servicio}
-              onChange={handleEditChange}
-            />
+            Servicio Solicitado<span style={{ color: 'red' }}>*</span>
           </label>
+          <select name="servicio"
+                value={editCita.servicio}
+                onChange={handleEditChange}>
+            <option value="" disabled>
+              Seleccione...
+            </option>
+            <option value="Corte">Corte</option>
+            <option value="Teñir">Teñir Cabello</option>
+            <option value="Alisado">Alisado</option>
+            <option value="Lavado">Lavado</option>
+            <option value="Cuidado">Cuidado General</option>
+          </select>
+          </div>
+          <div className="testimonials__txt">
           <label>
-            Altura del Cabello:
-            <input
-              type="text"
-              name="alturacabello"
-              value={editCita.alturacabello}
-              onChange={handleEditChange}
-            />
+            Altura del Cabello<span style={{ color: 'red' }}>*</span>
           </label>
-          <label>
-            Comentarios:
-            <textarea
-              name="comentarios"
-              value={editCita.comentarios || ''}
-              onChange={handleEditChange}
-            />
-          </label>
-          <button onClick={reagendarCita}>Confirmar</button>
+          <select name="alturacabello"
+                value={editCita.alturacabello}
+                onChange={handleEditChange}
+                placeholder="Altura del cabello" required>
+            <option value="" disabled>
+              Seleccione...
+            </option>
+            <option value="corto">Corto</option>
+            <option value="medio">Medio</option>
+            <option value="largo">Largo</option>
+          </select>
+          </div>
+          <div className="testimonials__txt">
+          <label>Información extra:</label>
+          <textarea
+            name="comentarios"
+            value={editCita.comentarios || ''}
+            onChange={handleEditChange}
+            placeholder="Ingrese información extra sobre su pedido aquí"
+            rows="6"
+            style={{ width: '100%' }}
+          ></textarea>
+          </div>
+
+          <div className="testimonials__txt">
+          <button className="welcome__btn" onClick={reagendarCita}>Confirmar cambios</button>
+          <br />
+          </div>
+
         </div>
       )}
     </main>

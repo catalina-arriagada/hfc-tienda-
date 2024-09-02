@@ -27,7 +27,8 @@ const Carritos = () => {
         });
 
         if (!response.ok) {
-          throw new Error('Error al obtener los pedidos');
+          router.push("/login");
+
         }
 
         const data = await response.json();

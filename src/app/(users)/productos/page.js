@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 async function fetchProductos() {
-  const res = await fetch('http://localhost:5000/productos');
+  const res = await fetch('http://localhost:5000/productos', { cache: 'no-store' });
+  
   if (!res.ok) {
     throw new Error('Error al obtener los productos');
   }
@@ -11,6 +12,7 @@ async function fetchProductos() {
 export default async function ProductosPage() {
   const productos = await fetchProductos();
 
+  console.log(productos);
   return (
     <main className="main">
       <section className="product__title">
