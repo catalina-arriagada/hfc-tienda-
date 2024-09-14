@@ -12,7 +12,7 @@ const port = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-    origin: 'https://hfc-tienda-8fj7.onrender.com/',
+    origin: 'https://hfc-tienda-8fj7.onrender.com',
 }));
 app.use(express.json());
 
@@ -198,10 +198,11 @@ app.get('/productos/:id', async (req, res) => {
 // Ruta para obtener todos los productos
 app.get('/productos', async (req, res) => {
   try {
-    const productos = await Producto.find();
-    res.status(200).json(productos);
+    const productos = await Producto.find(); // Obtiene todos los productos de la base de datos
+    res.status(200).json(productos); // Envía los productos como respuesta en formato JSON
   } catch (e) {
-    res.status(500).json({ error: 'Error al obtener los productos' });
+    console.error(e); // Registra el error para depuración
+    res.status(500).json({ error: 'Error al obtener los productos' }); // Envía un error en formato JSON
   }
 });
 
