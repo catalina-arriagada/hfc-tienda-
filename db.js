@@ -8,11 +8,11 @@ dotenv.config();
 const saltRounds = 10;
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-    origin: 'http://localhost:3000', // Reemplazar con la URL del frontend
+    origin: 'https://hfc-tienda-8fj7.onrender.com/',
 }));
 app.use(express.json());
 
@@ -233,5 +233,5 @@ app.post('/usuarios/validar', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Servidor corriendo en http://localhost:${port}`);
+    console.log(`Desde el codigo: Servidor corriendo en puerto ${port}`);
   });

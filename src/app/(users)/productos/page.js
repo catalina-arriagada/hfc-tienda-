@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 async function fetchProductos() {
-  const res = await fetch('http://localhost:5000/productos', { cache: 'no-store' });
+  const res = await fetch('https://hfc-tienda-8fj7.onrender.com/productos', { cache: 'no-store' });
   
   if (!res.ok) {
     throw new Error('Error al obtener los productos');

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 async function fetchProduct(id) {
-  const res = await fetch(`http://localhost:5000/productos/${id}`);
+  const res = await fetch(`https://hfc-tienda-8fj7.onrender.com/productos/${id}`);
   if (!res.ok) {
     throw new Error("Failed to fetch product");
   }
