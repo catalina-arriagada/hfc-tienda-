@@ -5,7 +5,7 @@ export async function getServerSideProps() {
   // Llamada a la API para obtener los productos
   const res = await fetch('http://localhost:5000/productos');
   const productos = await res.json();
-  console.log(productos);
+  console.log('Error getServerProp: ', productos);
   return {
     props: {
       productos, // Pasar productos como prop

@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { dbConnect, Usuario, bcrypt } from '../../../../../db'
 import jwt from 'jsonwebtoken'; // Instala jwt con npm install jsonwebtoken
 import dotenv from'dotenv';

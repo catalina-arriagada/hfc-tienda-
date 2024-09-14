@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { NextResponse } from 'next/server';
 import { dbConnect, Pedido, Usuario, Producto } from '../../../../db';
 import jwt from 'jsonwebtoken';
