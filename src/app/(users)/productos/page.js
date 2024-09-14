@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const TIMEOUT_MS = 10000; // 10 segundos
+const TIMEOUT_MS = 40000; // 40 segundos
 
 async function fetchProductos() {
   const fetchPromise = fetch('https://hfc-tienda-8fj7.onrender.com/productos');
@@ -15,11 +15,17 @@ async function fetchProductos() {
     if (!res.ok) {
       throw new Error('Error al obtener los productos');
     }
+
+    // Verificar que el tipo de contenido es JSON
+    const contentType = res.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      throw new Error('Respuesta no es JSON');
+    }
+
     return res.json();
   } catch (error) {
     console.error(error);
-    // Puedes manejar el error de forma más apropiada aquí
-    return []; // Devuelve un array vacío o maneja el error según lo necesites
+    return [];
   }
 }
 
