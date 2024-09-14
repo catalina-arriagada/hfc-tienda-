@@ -3,7 +3,7 @@ import Link from "next/link";
 const TIMEOUT_MS = 10000; // 10 segundos
 
 async function fetchProductos() {
-  const fetchPromise = fetch('https://hfc-tienda-8fj7.onrender.com/productos', { cache: 'no-store' });
+  const fetchPromise = fetch('https://hfc-tienda-8fj7.onrender.com/productos');
   
   const timeoutPromise = new Promise((_, reject) =>
     setTimeout(() => reject(new Error('Request timed out')), TIMEOUT_MS)
