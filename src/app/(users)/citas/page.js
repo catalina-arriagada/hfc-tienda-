@@ -18,7 +18,7 @@ const CitasPage = () => {
           return;
         }
 
-        const response = await fetch('/api/citas', {
+        const response = await fetch('https://hfc-tienda-8fj7.onrender.com/api/citas', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -48,7 +48,7 @@ const CitasPage = () => {
         return;
       }
 
-      const response = await fetch(`/api/citas/${editCita._id}`, {
+      const response = await fetch(`https://hfc-tienda-8fj7.onrender.com/api/citas/${editCita._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ const eliminarCita = async (id) => {
       return;
     }
 
-    const response = await fetch(`/api/citas/${id}`, {
+    const response = await fetch(`https://hfc-tienda-8fj7.onrender.com/api/citas/${id}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`

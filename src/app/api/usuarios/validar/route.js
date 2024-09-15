@@ -17,7 +17,7 @@ export async function POST(req) {
     console.log('Contraseña recibida:', contrasenia);
     console.log('Contraseña en la base de datos:', usuario.contrasenia);
 
-    if (!usuario) {
+    if (!usuario || !contrasenia) {
       return new Response(JSON.stringify({ error: 'Usuario no encontrado' }), {
         status: 404,
       });

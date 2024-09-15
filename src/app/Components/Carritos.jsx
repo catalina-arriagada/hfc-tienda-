@@ -20,7 +20,7 @@ const Carritos = () => {
           return;
         }
 
-        const response = await fetch('/api/pedidos', {
+        const response = await fetch('https://hfc-tienda-8fj7.onrender.com/api/pedidos', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -52,7 +52,7 @@ const Carritos = () => {
         return;
       }
 
-      const response = await fetch(`/api/pedidos/${pedidoId}`, {
+      const response = await fetch(`https://hfc-tienda-8fj7.onrender.com/api/pedidos/${pedidoId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

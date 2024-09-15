@@ -9,7 +9,7 @@ const Registro = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://hfc-tienda-8fj7.onrender.com/usuarios', {
+      const response = await axios.post('https://hfc-tienda-8fj7.onrender.com/usuarios/validar', {
         nombre,
         contrasenia
       });

@@ -13,7 +13,7 @@ export default function Login() {
     e.preventDefault();
 
   try {
-    const response = await fetch('/api/usuarios/validar', {
+    const response = await fetch('https://hfc-tienda-8fj7.onrender.com/api/usuarios/validar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
